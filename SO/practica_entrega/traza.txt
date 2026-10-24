@@ -1,0 +1,114 @@
+7996  16:59:52.819845 execve("./acueducto", ["./acueducto"], 0x7ffd84ef4588 /* 49 vars */) = 0
+7996  16:59:52.820362 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+7996  16:59:52.820538 close(3</etc/ld.so.cache>) = 0
+7996  16:59:52.820578 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+7996  16:59:52.820788 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+7996  16:59:52.821094 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7db33ff8da10) = 7997
+7996  16:59:52.821203 wait4(7997,  <unfinished ...>
+7997  16:59:52.821275 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "numeros.txt", O_WRONLY|O_CREAT|O_TRUNC, 0644) = 3</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>
+7997  16:59:52.821423 dup2(3</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>, 1</dev/pts/1<char 136:1>>) = 1</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>
+7997  16:59:52.821482 close(3</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>) = 0
+7997  16:59:52.821526 execve("./generador", ["generador"], 0x7ffe976d2af8 /* 49 vars */) = 0
+7997  16:59:52.821926 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+7997  16:59:52.822010 close(3</etc/ld.so.cache>) = 0
+7997  16:59:52.822059 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+7997  16:59:52.822386 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+7997  16:59:52.823272 exit_group(0)     = ?
+7997  16:59:52.823461 +++ exited with 0 +++
+7996  16:59:52.823489 <... wait4 resumed>NULL, 0, NULL) = 7997
+7996  16:59:52.823518 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=7997, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+7996  16:59:52.823578 pipe2([3<pipe:[55111]>, 4<pipe:[55111]>], 0) = 0
+7996  16:59:52.823636 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7db33ff8da10) = 7998
+7996  16:59:52.823759 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD <unfinished ...>
+7998  16:59:52.823797 close(3<pipe:[55111]> <unfinished ...>
+7996  16:59:52.823822 <... clone resumed>, child_tidptr=0x7db33ff8da10) = 7999
+7998  16:59:52.823829 <... close resumed>) = 0
+7996  16:59:52.823841 close(3<pipe:[55111]> <unfinished ...>
+7998  16:59:52.823852 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "numeros.txt", O_RDONLY <unfinished ...>
+7996  16:59:52.823870 <... close resumed>) = 0
+7998  16:59:52.823878 <... openat resumed>) = 3</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>
+7996  16:59:52.823890 close(4<pipe:[55111]> <unfinished ...>
+7998  16:59:52.823900 dup2(3</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>, 0</dev/pts/1<char 136:1>> <unfinished ...>
+7996  16:59:52.823917 <... close resumed>) = 0
+7998  16:59:52.823923 <... dup2 resumed>) = 0</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>
+7996  16:59:52.823934 wait4(7998,  <unfinished ...>
+7998  16:59:52.823941 close(3</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>) = 0
+7998  16:59:52.823967 dup2(4<pipe:[55111]>, 1</dev/pts/1<char 136:1>>) = 1<pipe:[55111]>
+7998  16:59:52.824001 close(4<pipe:[55111]> <unfinished ...>
+7999  16:59:52.824012 close(4<pipe:[55111]> <unfinished ...>
+7998  16:59:52.824025 <... close resumed>) = 0
+7998  16:59:52.824042 execve("./dec2rom", ["dec2rom"], 0x7ffe976d2af8 /* 49 vars */ <unfinished ...>
+7999  16:59:52.824057 <... close resumed>) = 0
+7999  16:59:52.824107 dup2(3<pipe:[55111]>, 0</dev/pts/1<char 136:1>>) = 0<pipe:[55111]>
+7999  16:59:52.824170 close(3<pipe:[55111]>) = 0
+7999  16:59:52.824199 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "vuelta.txt", O_WRONLY|O_CREAT|O_TRUNC, 0644 <unfinished ...>
+7998  16:59:52.824237 <... execve resumed>) = 0
+7999  16:59:52.824264 <... openat resumed>) = 3</home/fenix/Escritorio/espacio/SO/practica_entrega/vuelta.txt>
+7999  16:59:52.824286 dup2(3</home/fenix/Escritorio/espacio/SO/practica_entrega/vuelta.txt>, 1</dev/pts/1<char 136:1>>) = 1</home/fenix/Escritorio/espacio/SO/practica_entrega/vuelta.txt>
+7999  16:59:52.824324 close(3</home/fenix/Escritorio/espacio/SO/practica_entrega/vuelta.txt>) = 0
+7999  16:59:52.824358 execve("./rom2dec", ["rom2dec"], 0x7ffe976d2af8 /* 49 vars */ <unfinished ...>
+7998  16:59:52.824391 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+7998  16:59:52.824473 close(3</etc/ld.so.cache>) = 0
+7998  16:59:52.824512 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+7999  16:59:52.824543 <... execve resumed>) = 0
+7999  16:59:52.824643 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+7999  16:59:52.824709 close(3</etc/ld.so.cache>) = 0
+7998  16:59:52.824736 close(3</usr/lib/x86_64-linux-gnu/libc.so.6> <unfinished ...>
+7999  16:59:52.824748 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC <unfinished ...>
+7998  16:59:52.824760 <... close resumed>) = 0
+7999  16:59:52.824766 <... openat resumed>) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+7999  16:59:52.824934 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+7998  16:59:52.825764 exit_group(0)     = ?
+7998  16:59:52.825953 +++ exited with 0 +++
+7999  16:59:52.826015 exit_group(0)     = ?
+7996  16:59:52.826186 <... wait4 resumed>NULL, 0, NULL) = 7998
+7996  16:59:52.826220 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=7998, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+7996  16:59:52.826253 wait4(7999,  <unfinished ...>
+7999  16:59:52.826264 +++ exited with 0 +++
+7996  16:59:52.826289 <... wait4 resumed>NULL, 0, NULL) = 7999
+7996  16:59:52.826307 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=7999, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+7996  16:59:52.826330 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7db33ff8da10) = 8000
+7996  16:59:52.826541 wait4(8000,  <unfinished ...>
+8000  16:59:52.826589 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/dev/null", O_WRONLY) = 3</dev/null<char 1:3>>
+8000  16:59:52.826668 dup2(3</dev/null<char 1:3>>, 1</dev/pts/1<char 136:1>>) = 1</dev/null<char 1:3>>
+8000  16:59:52.826717 close(3</dev/null<char 1:3>>) = 0
+8000  16:59:52.826765 execve("/usr/local/sbin/diff", ["diff", "vuelta.txt", "numeros.txt"], 0x7ffe976d2af8 /* 49 vars */) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.826928 execve("/usr/local/bin/diff", ["diff", "vuelta.txt", "numeros.txt"], 0x7ffe976d2af8 /* 49 vars */) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.826976 execve("/usr/sbin/diff", ["diff", "vuelta.txt", "numeros.txt"], 0x7ffe976d2af8 /* 49 vars */) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.827012 execve("/usr/bin/diff", ["diff", "vuelta.txt", "numeros.txt"], 0x7ffe976d2af8 /* 49 vars */) = 0
+8000  16:59:52.827403 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+8000  16:59:52.827509 close(3</etc/ld.so.cache>) = 0
+8000  16:59:52.827552 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+8000  16:59:52.827762 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+8000  16:59:52.828137 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3</usr/lib/locale/locale-archive>
+8000  16:59:52.828223 close(3</usr/lib/locale/locale-archive>) = 0
+8000  16:59:52.828285 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3</etc/locale.alias>
+8000  16:59:52.828374 close(3</etc/locale.alias>) = 0
+8000  16:59:52.828420 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale/es_ES.UTF-8/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828451 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale/es_ES.utf8/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828490 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale/es_ES/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828521 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale/es.UTF-8/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828551 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale/es.utf8/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828581 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale/es/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828613 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale-langpack/es_ES.UTF-8/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828643 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale-langpack/es_ES.utf8/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828686 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale-langpack/es_ES/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828715 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale-langpack/es.UTF-8/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828745 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale-langpack/es.utf8/LC_MESSAGES/diffutils.mo", O_RDONLY) = -1 ENOENT (No existe el archivo o el directorio)
+8000  16:59:52.828774 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/share/locale-langpack/es/LC_MESSAGES/diffutils.mo", O_RDONLY) = 3</usr/share/locale-langpack/es/LC_MESSAGES/diffutils.mo>
+8000  16:59:52.828838 close(3</usr/share/locale-langpack/es/LC_MESSAGES/diffutils.mo>) = 0
+8000  16:59:52.828872 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache>
+8000  16:59:52.828935 close(3</usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache>) = 0
+8000  16:59:52.828977 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "/proc/self/maps", O_RDONLY) = 3</proc/8000/maps>
+8000  16:59:52.829094 close(3</proc/8000/maps>) = 0
+8000  16:59:52.829245 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "vuelta.txt", O_RDONLY) = 3</home/fenix/Escritorio/espacio/SO/practica_entrega/vuelta.txt>
+8000  16:59:52.829279 openat(AT_FDCWD</home/fenix/Escritorio/espacio/SO/practica_entrega>, "numeros.txt", O_RDONLY) = 4</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>
+8000  16:59:52.829403 close(3</home/fenix/Escritorio/espacio/SO/practica_entrega/vuelta.txt>) = 0
+8000  16:59:52.829429 close(4</home/fenix/Escritorio/espacio/SO/practica_entrega/numeros.txt>) = 0
+8000  16:59:52.829462 close(1</dev/null<char 1:3>>) = 0
+8000  16:59:52.829505 exit_group(0)     = ?
+8000  16:59:52.829653 +++ exited with 0 +++
+7996  16:59:52.829671 <... wait4 resumed>[{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 8000
+7996  16:59:52.829708 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=8000, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+7996  16:59:52.829819 exit_group(0)     = ?
+7996  16:59:52.829910 +++ exited with 0 +++
