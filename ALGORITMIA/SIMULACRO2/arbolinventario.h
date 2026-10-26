@@ -1,36 +1,47 @@
-// arbolInventario.h
-#include <stdbool.h>
+#include "arbolInventario.h"
+#include <stdio.h>
 
-typedef int tipoIdProducto;
-typedef int tipoStock;
+int main(){
 
-typedef struct celdaInventario {
-    tipoIdProducto id;
-    tipoStock stock;
-    struct celdaInventario* izda;
-    struct celdaInventario* dcha;
-} celdaArbolInventario;
+    int opcion;
+    // Declaración local más limpia y eficiente
+    tipoArbolInventario arbol;
+    nuevoArbolInventario(&arbol);
 
-typedef celdaArbolInventario* tipoArbolInventario;
+    do{
+        printf("\n--- GESTIÓN DE INVENTARIO ---\n");
+        printf("1. Recibir piezas\n");
+        printf("2. Consumir piezas\n");
+        printf("3. Cerrar jornada\n");
+        printf("Opción: ");
+        scanf("%d", &opcion);
 
-// 0.25 ptos: Inicializa el árbol a nulo
-void nuevoArbolInventario(tipoArbolInventario *a);
+        if(opcion == 1){
+            int id, cantidad;
+            printf("ID Pieza: ");
+            scanf("%d", &id);
+            printf("Cantidad: ");
+            scanf("%d", &cantidad);
 
-// 0.25 ptos: Comprueba si el árbol está vacío
-bool esVacio(tipoArbolInventario a);
+            anadirStock(&arbol, id, cantidad);
+        }
+        else if(opcion == 2){
+            int id, cantidad;
+            printf("ID Pieza: ");
+            scanf("%d", &id);
+            printf("Cantidad: ");
+            scanf("%d", &cantidad);
 
-// 2.0 ptos: Busca el id. Si no existe, crea el nodo con el stock indicado.
-// Si existe, suma la cantidad al stock actual.
-void anadirStock(tipoArbolInventario *a, tipoIdProducto id, tipoStock cantidad);
+            consumirStock(&arbol, id, cantidad);
+        }
+        else if(opcion == 3){
+            printf("\nCIERRE DE JORNADA\n");
+            printf("Tipos de piezas en stock: %d\n", contarProductosDistintos(arbol));
+            printf("Listado de inventario:\n");
+            mostrarInventario(arbol);
+        }
 
-// 2.5 ptos: Busca el id. Si existe, resta la cantidad indicada.
-// ATENCIÓN: Si tras restar, el stock es <= 0, debe aplicar el algoritmo
-// de borrado de ABB para eliminar el nodo completamente.
-void consumirStock(tipoArbolInventario *a, tipoIdProducto id, tipoStock cantidad);
+    } while(opcion != 3);
 
-// 0.5 ptos: Imprime el inventario ordenado de menor a mayor ID.
-// Formato: "Producto: %d - Stock: %d\n"
-void mostrarInventario(tipoArbolInventario a);
-
-// 0.5 ptos: Devuelve el número total de nodos (tipos de productos distintos) en el árbol.
-int contarProductosDistintos(tipoArbolInventario a);
+    return 0;
+}
