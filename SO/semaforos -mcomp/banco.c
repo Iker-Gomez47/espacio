@@ -5,6 +5,8 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <stdbool.h>
+#include <sys/types.h>
+#include <sys/sem.h>
 
 volatile sig_atomic_t salida = 0;
 
@@ -22,10 +24,17 @@ int main(int argc, char *argv[]) {
     int proj_id = atoi(argv[1]);
 
     key_t clave = ftok("/etc", proj_id);
-    int shm_id = shmget(clave, 3*sizeof(long), 0600 | IPC_CREAT);
-    printf("Id de la mc: %d\n", shm_id);
 
+    int sem_id = semget(clave, 1, 0600 | IPC_CREAT);
+    int shm_id = shmget(clave, 3*sizeof(long), 0600 | IPC_CREAT);
+    printf("Id de la mc: %d, ID del sem: %d \n", shm_id, sem_id);
+
+
+    semctl(sem_id, 0, SETVAL, 1);
     long *banco = (long*)shmat(shm_id, NULL, 0);
+
+    struct sembuf acquire = { .sem_num = 0, .sem_op = -1, .sem_flg = 0 };
+    struct sembuf release = { .sem_num = 0, .sem_op =  1, .sem_flg = 0 };
 
     for(int i = 0; i < 3; i++){
 
@@ -34,6 +43,8 @@ int main(int argc, char *argv[]) {
 
     while(salida == 0){
 
+        semop(sem_id, &acquire, 1);
+
         int suma = 0;
         for(int i = 0; i < 3; i++){
 
@@ -41,7 +52,11 @@ int main(int argc, char *argv[]) {
         }
         printf("Suma: %d\n", suma);
         sleep(1);
+
+        semop(sem_id, &release, 1);
+
     }
+    semctl(sem_id, 0, IPC_RMID);
 
     shmdt(banco);
     shmctl(shm_id, IPC_RMID, NULL);
