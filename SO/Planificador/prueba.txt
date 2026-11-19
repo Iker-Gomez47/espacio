@@ -1,0 +1,5 @@
+# Archivo de prueba
+3 ./buddhabrot 0 0
+0 espera 2000
+1 ./factoriza 99999999
+4 fin
