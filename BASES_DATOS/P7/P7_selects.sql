@@ -53,22 +53,40 @@ ORDER BY NUM_PROPIETARIOS DESC ;
 -- que han comprado en algún momento y a cuántas empresas pertenecen dichas acciones.
 -- DNI NOMBRE Total acciones | Empresas dueñas |
 
+SELECT p.DNI, p.NOMBRE, SUM(pa.NUMACCPER) AS "Total acciones", COUNT(DISTINCT a.EMPRESA) AS "Empresas dueñas"
+FROM PERSONA p, PERACC pa, ACCIONES a
+WHERE p.DNI = pa.DNI AND pa.CODA = a.CODA
+GROUP BY p.DNI, p.NOMBRE;
 
 
 -- 6. Mostrar las empresas con más de un inversor distinto.
 -- EMPRESA | NUM INVERSORES|
 
+SELECT a.EMPRESA, COUNT(DISTINCT pa.DNI) AS NUM_INVERSORES
+FROM ACCIONES a, PERACC pa
+WHERE a.CODA = pa.CODA
+GROUP BY a.EMPRESA
+HAVING COUNT(DISTINCT pa.DNI) > 1;
 
 
 -- 7. Obtener por cada persona cuántos inmuebles y acciones ha vendido.
 -- DNI NOMBRE | Inmuebles vendidos Acciones vendidas|
 
+SELECT p.DNI, p.NOMBRE,
+       (SELECT COUNT(*) FROM PERINM pi WHERE pi.DNI = p.DNI AND pi.FVENTAINM IS NOT NULL) AS "Inmuebles vendidos",
+       (SELECT COUNT(*) FROM PERACC pa WHERE pa.DNI = p.DNI AND pa.FVENTACC IS NOT NULL) AS "Acciones vendidas"
+FROM PERSONA p;
 
 
 -- 8. Comprobar si existe alguna inconsistencia en los inmuebles que no están vendidos,
 -- es decir, sus propietarios superan el 100% del porcentaje.
 -- CODI | TOTAL_PORCENTAJE |
 
+SELECT CODI, SUM(PORCENTAJE) AS TOTAL_PORCENTAJE
+FROM PERINM
+WHERE FVENTAINM IS NULL
+GROUP BY CODI
+HAVING SUM(PORCENTAJE) > 100;
 
 
 -- 9. Mostrar el código del inmueble, su dirección y el número de veces que ha sido
@@ -76,20 +94,42 @@ ORDER BY NUM_PROPIETARIOS DESC ;
 -- 2022 y la fecha actual.
 -- CODI | DIRECCION Veces vendido |
 
+SELECT i.CODI, i.DIRECCION, COUNT(*) AS "Veces vendido"
+FROM INMUEBLE i, PERINM pi
+WHERE i.CODI = pi.CODI 
+  AND pi.FVENTAINM BETWEEN TO_DATE('01/01/2022', 'DD/MM/YYYY') AND SYSDATE
+GROUP BY i.CODI, i.DIRECCION;
 
 
 -- 10. Mostrar el DNI y nombre de las personas cuya diferencia entre la fecha mínima de
 -- compra y la fecha máxima de venta de sus acciones sea superior a 2 años.
 -- DNI NOMBRE | PRIMERA_COMPRA | ULTIMA_VENTA|
 
+SELECT p.DNI, p.NOMBRE, MIN(pa.FCOMPRACC) AS PRIMERA_COMPRA, MAX(pa.FVENTACC) AS ULTIMA_VENTA
+FROM PERSONA p, PERACC pa
+WHERE p.DNI = pa.DNI
+GROUP BY p.DNI, p.NOMBRE
+HAVING MONTHS_BETWEEN(MAX(pa.FVENTACC), MIN(pa.FCOMPRACC)) / 12 > 2;
 
 
 -- 11. Mostrar las empresas en las que se han realizado compras de sus acciones en al
 -- menos dos años distintos, junto con el número total de operaciones.
 -- EMPRESA | Número operaciones |
 
+SELECT a.EMPRESA, COUNT(*) AS "Número operaciones"
+FROM ACCIONES a, PERACC pa
+WHERE a.CODA = pa.CODA
+GROUP BY a.EMPRESA
+HAVING COUNT(DISTINCT TO_CHAR(pa.FCOMPRACC, 'YYYY')) >= 2;
 
 
 -- 12. Mostrar el DNI de las personas junto con parejas de acciones diferentes en las que
 -- el año de compra de unas acciones coincida con el año de venta de las otras.
 -- DNI ACCION1|ACCION2
+
+SELECT pa1.DNI, pa1.CODA AS ACCION1, pa2.CODA AS ACCION2
+FROM PERACC pa1, PERACC pa2
+WHERE pa1.DNI = pa2.DNI 
+  AND pa1.CODA != pa2.CODA 
+  AND TO_CHAR(pa1.FCOMPRACC, 'YYYY') = TO_CHAR(pa2.FVENTACC, 'YYYY');
+
