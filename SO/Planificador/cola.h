@@ -44,3 +44,8 @@ static proceso_t cola_desencolar(cola_t *c, proceso_t *p) {
     c->n--;
     return sacado;
 }
+
+bool esColaVacia(cola_t c){
+
+    return c.n == 0;
+}
